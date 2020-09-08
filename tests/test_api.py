@@ -1,11 +1,11 @@
 import requests
 
 
-URL = 'http://localhost:5000/crud'
+URL = 'http://localhost:8080/crud'
 
 def test_for_empty_request():
 
-    resp = requests.get('http://localhost:5000/')
+    resp = requests.get('http://localhost:8080/')
     assert resp.status_code == 200
     assert resp.json() == {'app' : 'crud api'}
 
