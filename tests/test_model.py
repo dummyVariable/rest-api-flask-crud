@@ -18,6 +18,7 @@ def test_for_read_data():
     assert db().read(2) == {'name' : 'Spiderman', 'league' : 'Avengers'}
     assert db().read(3) is None
 
+
 def test_for_update_data():
 
     data1 = {'name' : 'Flash', 'league' : 'Justice League'}
