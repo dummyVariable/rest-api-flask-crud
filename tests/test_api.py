@@ -1,12 +1,18 @@
 import requests
 
-URL = 'localhost:5000/app'
+
+URL = 'http://localhost:5000/crud'
 
 def test_for_empty_request():
 
-    resp = requests.get(URL)
+    resp = requests.get('http://localhost:5000/')
     assert resp.status_code == 200
     assert resp.json() == {'app' : 'crud api'}
+
+    resp = requests.get(URL)
+    assert resp.status_code == 200
+    assert resp.json() == {'message' : 'no items found'}
+
 
     resp = requests.get(url=URL+'/123')
     assert resp.json() == {'message' : 'item not found'}
@@ -21,6 +27,11 @@ def test_for_create():
     assert resp.status_code == 200
     assert resp.json() == {'message' : 'created'}
 
+def test_for_read_all():
+    
+    resp = requests.get(url=URL)
+    assert resp.status_code == 200
+    assert len(resp.json()) == 2
 
 def test_for_read():
 
@@ -45,4 +56,5 @@ def test_for_delete():
     
     resp = requests.get(url=URL+'/2')
     assert resp.json() == {'message' : 'item not found'}
+
 

@@ -1,4 +1,4 @@
-from typing import TypeVar
+from typing import TypeVar, List
 
 
 
@@ -18,6 +18,10 @@ class CrudModel:
     @staticmethod
     def read(id: int) -> dict:
         return data.get(id)
+
+    @staticmethod
+    def read_all() -> List[dict]:
+        return data
 
     @staticmethod
     def update(id: int, item: dict) -> str:
