@@ -3,7 +3,7 @@ from typing import TypeVar, List
 import redis
 import json
 
-rc = redis.Redis()
+rc = redis.Redis(host='redis', port=6379)
 data = {}
 
 class CrudModel:
