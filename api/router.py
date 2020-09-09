@@ -18,7 +18,7 @@ class CrudApp(Resource):
 class CrudAll(Resource):
 
     def get(self):
-        data = db().read_all()
+        data = db.read_all()
         
         if data:
             return data
@@ -27,7 +27,7 @@ class CrudAll(Resource):
 
     def post(self):
         args = parser.parse_args()
-        msg = db().create(args)
+        msg = db.create(args)
         if msg:
             return {'message' : 'created'}
         return abort_message()
@@ -36,7 +36,7 @@ class CrudByID(Resource):
     
 
     def get(self, id: int) -> dict:
-        data = db().read(id)
+        data = db.read(id)
         if not data:
             return abort_message()
         
@@ -44,13 +44,13 @@ class CrudByID(Resource):
 
     def put(self, id: int) -> dict:
         args = parser.parse_args()
-        data = db().update(id, args)
+        data = db.update(id, args)
         if not data:
             return abort_message()
         return {'message' : 'updated'}
     
     def delete(self, id: int) -> dict:
-        data = db().delete(id)
+        data = db.delete(id)
         
         if not data:
             return abort_message()
