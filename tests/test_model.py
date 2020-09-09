@@ -24,7 +24,6 @@ def test_for_update_data():
     data1 = {'name' : 'Flash', 'league' : 'Justice League'}
     assert db.update(1, data1) == 'ok'
     assert db.read(1) == {'name' : 'Flash', 'league' : 'Justice League'}
-    assert db.update(4, data1) is None
 
 
 def test_for_delete_data():
@@ -32,3 +31,4 @@ def test_for_delete_data():
     assert db.delete(2) == 'ok'
     assert db.read(2) is None
     assert db.delete(2) is None
+    

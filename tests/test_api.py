@@ -50,11 +50,14 @@ def test_for_update():
     assert resp.json() == {'name' : 'Flash', 'league' : 'Justice League'}
 
 def test_for_delete():
-
+    
+    requests.delete(url=URL+'/1')
     resp = requests.delete(url=URL+'/2')
     assert resp.json() == {'message' : 'deleted'}
     
     resp = requests.get(url=URL+'/2')
     assert resp.json() == {'message' : 'item not found'}
+
+    
 
 
